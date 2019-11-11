@@ -1,0 +1,435 @@
+$primary: #6d4c41;
+$main-bg: #e0e0e0;
+$shadow: 0px 0px 2px rgba(0, 0, 0, 0.15), 0px 2px 4px rgba(0, 0, 0, 0.5);
+
+@mixin size($w, $h) {
+  width: $w;
+  height: $h;
+}
+
+@mixin position($t, $l, $p) {
+  top: $t;
+  left: $l;
+  position: $p;
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Noto Sans TC', sans-serif;
+}
+
+p,
+label {
+  margin-bottom: 0;
+}
+
+#current-guid {
+  @include position(0px, -999px, absolute);
+}
+
+.header {
+  @include size(100%, 184px);
+  background-color: $primary;
+}
+
+.main {
+  // background-color: $main-bg;
+  border: 1px solid transparent;
+  // min-height: calc(100vh - 184px);
+
+  .form {
+    @include size(770px, auto);
+    margin: 0 auto;
+    // margin-top: -50px;
+    padding: 24px 48px;
+    box-shadow: $shadow;
+    background-color: #fff;
+
+    .form-title {
+      @include size(auto, 50px);
+      margin-bottom: 32px;
+
+      input[type='text'] {
+        font-size: 34px;
+        margin-bottom: 4px;
+      }
+    }
+
+    .form-description {
+      height: 20px;
+      margin-bottom: 32px;
+
+      input[type='text'] {
+        font-size: 15px;
+      }
+    }
+
+    .form-question {
+      margin-bottom: 32px;
+
+      .question-title {
+        @include flex-center();
+
+        h4 {
+          font-weight: bold;
+          margin-bottom: 0 !important;
+        }
+
+        .required {
+          color: red;
+          margin-right: 4px;
+        }
+
+        .edit {
+          cursor: pointer;
+          color: #777;
+          display: none;
+          font-weight: bold;
+          transition: 0.15s;
+          margin-left: 16px;
+
+          &:hover {
+            color: $primary;
+          }
+        }
+      }
+
+      .question-option {
+        @include flex-center();
+        height: 24px;
+        margin-top: 16px;
+
+        input[type='radio'],
+        input[type='checkbox'] {
+          cursor: pointer;
+          zoom: 150%;
+          margin-top: 2px;
+          margin-right: 8px;
+        }
+
+        label {
+          cursor: pointer;
+        }
+      }
+
+      select {
+        margin-top: 16px;
+      }
+
+      .literal {
+        height: 26px;
+        margin-top: 16px;
+
+        > input[type='text'],
+        input[type='email'],
+        input[type='english'] {
+          height: 100%;
+          font-size: 16px;
+          margin-bottom: -2px;
+          border-bottom: 1px solid #ccc;
+        }
+      }
+
+      .date {
+        width: 200px;
+      }
+    }
+  }
+
+  .editor {
+    @include size(770px, auto);
+    padding: 24px 48px;
+    position: relative;
+    box-shadow: $shadow;
+    background-color: #fff;
+    margin: 24px auto 64px auto;
+
+    .sidebar {
+      @include size(52px, 104px);
+      @include position(0px, 786px, absolute);
+      box-shadow: $shadow;
+      background-color: #fff;
+
+      .sidebar-item {
+        @include flex-center();
+        @include size(52px, 52px);
+        position: relative;
+        justify-content: center;
+
+        .tooltip-fa-copy {
+          @include size(130px, auto);
+        }
+
+        .tooltip-times-circle {
+          @include size(64px, auto);
+        }
+
+        .tooltip-fa-copy,
+        .tooltip-times-circle {
+          @include position(13px, 68px, absolute);
+          display: none;
+          padding: 4px 8px;
+          border-radius: 2px;
+          background-color: #555;
+
+          p {
+            color: #fff;
+            font-size: 12px;
+          }
+        }
+      }
+    }
+
+    .title-and-menu {
+      display: flex;
+      justify-content: space-between;
+
+      .title {
+        @include size(65%, 30px);
+        margin-top: 12px;
+
+        input[type='text'] {
+          font-size: 20px;
+          margin-bottom: -2px;
+          border-bottom: 1px solid #ccc;
+        }
+      }
+
+      .menu {
+        @include size(160px, auto);
+        position: relative;
+
+        .current-menu {
+          @include size(160px, 42px);
+          @include flex-center();
+          cursor: pointer;
+          padding: 12px;
+          background-color: rgba(#ccc, 0.25);
+
+          &:hover {
+            background-color: rgba(#ccc, 0.5);
+          }
+
+          p {
+            font-size: 15px;
+            margin-left: 12px;
+          }
+        }
+
+        .menu-list {
+          @include position(0px, 0px, absolute);
+          box-shadow: $shadow;
+          background-color: #fff;
+          z-index: 9;
+        }
+      }
+    }
+
+    .options {
+      margin: 32px 0px 24px 0px;
+
+      .option {
+        @include flex-center();
+        height: 30px;
+        margin-top: 16px;
+
+        .option-icon {
+          height: 100%;
+        }
+
+        .option-input {
+          @include size(75%, 100%);
+          margin-left: 16px;
+
+          input[type='text'] {
+            font-size: 15px;
+            padding-bottom: 2px;
+
+            &:hover {
+              border-bottom: 1px solid #ccc;
+            }
+
+            &:focus {
+              border-bottom: none;
+            }
+          }
+        }
+
+        label {
+          color: #999;
+          font-size: 15px;
+          padding-bottom: 2px;
+          padding-right: 300px;
+          border-bottom: 1px dotted #777;
+        }
+      }
+    }
+
+    .functions {
+      @include flex-center();
+      padding-top: 16px;
+      border-top: 1px solid #ccc;
+
+      .separationLine {
+        @include size(24px, 30px);
+        margin: 0px 24px 0px 8px;
+        border-right: 1px solid #ccc;
+      }
+
+      .switch-area {
+        @include flex-center();
+
+        p {
+          font-size: 15px;
+          margin-right: 12px;
+        }
+
+        .switch {
+          @include size(44px, 18px);
+          cursor: pointer;
+          position: relative;
+          border-radius: 20px;
+          transition: all 0.35s;
+          display: inline-block;
+          background-color: rgba(0, 0, 0, 0.25);
+        }
+
+        .switch::after {
+          @include size(24px, 24px);
+          @include position(-3px, -2px, absolute);
+          content: '';
+          border-radius: 18px;
+          box-shadow: $shadow;
+          transition: all 0.35s;
+          background-color: #fff;
+        }
+
+        .offscreen {
+          @include position(0px, -999px, absolute);
+        }
+
+        input[type='checkbox']:checked + .switch {
+          background-color: $primary;
+        }
+
+        input[type='checkbox']:checked + .switch::after {
+          transform: translateX(24px);
+        }
+      }
+    }
+  }
+}
+
+// Global Icon Style
+
+.binding {
+  cursor: pointer;
+  color: #777;
+  display: none;
+  font-weight: bold;
+  transition: 0.15s;
+  margin-left: 16px;
+
+  &:hover {
+    color: $primary;
+  }
+}
+
+// Global Input Style
+
+.input {
+  text-align: center;
+
+  > input[type='text'],
+  input[type='email'],
+  input[type='english'] {
+    @include size(100%, auto);
+    border: none;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:focus + .line {
+      @include size(100%, 2px);
+      background-color: $primary;
+    }
+  }
+
+  .line {
+    @include size(0px, 2px);
+    top: -16px;
+    transition: 0.35s;
+    position: relative;
+    display: inline-block;
+    background-color: $primary;
+  }
+}
+
+// Copy Icon Style
+
+@keyframes apple {
+  0% {
+    transform: scale(1, 1);
+  }
+  50% {
+    transform: scale(1.3, 1.3);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+.apple {
+  animation: apple 0.3s;
+}
+
+// functional
+
+.size-24 {
+  @include size(24px, 24px);
+  cursor: pointer;
+}
+
+.ml-auto {
+  margin-left: auto;
+}
+
+// close
+
+.icon-cross {
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  opacity: 0.25;
+  display: none;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &::before,
+  &::after {
+    content: '';
+    width: 3px;
+    height: 20px;
+    margin-left: 16px;
+    position: absolute;
+    background-color: #333;
+  }
+
+  &::before {
+    transform: rotate(45deg);
+  }
+
+  &::after {
+    transform: rotate(-45deg);
+  }
+}
