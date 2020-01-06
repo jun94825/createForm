@@ -5,7 +5,7 @@ export default Vue.component('date', {
     <div class="form-question" v-if="display">
       <div class="question-title" @mousemove="showEdit(question.Guid)" @mouseout="hideEdit(question.Guid)">
         <p class="required" v-if="question.Required">*</p>
-        <h4>{{ index + 1}}. {{ question.Title }}</h4>
+        <h4>{{ index + 1}}.  {{ question.Title }}</h4>
         <p class="edit" :data-key="question.Guid" @click="edit(question)">Edit</p>
       </div>
       

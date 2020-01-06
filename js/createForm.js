@@ -409,6 +409,7 @@ Vue.component('create-form', {
           item.Answer = [];
         }
       });
+      console.log(this.form); // 測試用
       return JSON.stringify(this.form);
     },
     reEditForm(obj) {
