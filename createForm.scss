@@ -153,7 +153,7 @@ label {
     margin: 24px auto 64px auto;
 
     .sidebar {
-      @include size(52px, 104px);
+      @include size(52px, auto);
       @include position(0px, 786px, absolute);
       box-shadow: $shadow;
       background-color: #fff;
@@ -243,11 +243,15 @@ label {
 
         .option-icon {
           height: 100%;
+
+          p {
+            display: inline;
+          }
         }
 
         .option-input {
-          @include size(75%, 100%);
-          margin-left: 16px;
+          @include size(60%, 100%);
+          margin-left: 8px;
 
           input[type='text'] {
             font-size: 15px;
@@ -322,6 +326,24 @@ label {
 
         input[type='checkbox']:checked + .switch::after {
           transform: translateX(24px);
+        }
+      }
+
+      .delete {
+        position: relative;
+
+        .tooltip-delete {
+          @include size(124px, auto);
+          @include position(0, -135px, absolute);
+          display: none;
+          padding: 4px 8px;
+          border-radius: 2px;
+          background-color: #555;
+
+          p {
+            color: #fff;
+            font-size: 12px;
+          }
         }
       }
     }
@@ -433,4 +455,8 @@ label {
   &::after {
     transform: rotate(-45deg);
   }
+}
+
+.w-80 {
+  width: 80px;
 }

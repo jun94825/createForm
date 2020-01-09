@@ -1,5 +1,5 @@
 const dropdown_literal_date = Vue.extend({
-  props: ['question', 'index'],
+  props: ['question', 'index', 'ScoreMode', 'editMode'],
   data() {
     return {
       display: true,
@@ -17,16 +17,16 @@ const dropdown_literal_date = Vue.extend({
       this.$root.$children[0].form.Questions.forEach((item, index, array) => {
         if (data.Guid === item.Guid) {
           item.index = index;
-          this.$root.$children[0].current = item;
+
+          if (this.editMode) {
+            this.$root.$children[0].forReadOnly = item;
+          } else {
+            this.$root.$children[0].current = item;
+          }
+
           array.splice(index, 1);
         }
       });
-    },
-    showEdit(guid) {
-      document.querySelector(`p[data-key="${guid}"]`).style.display = 'block';
-    },
-    hideEdit(guid) {
-      document.querySelector(`p[data-key="${guid}"]`).style.display = 'none';
     },
   },
   mounted() {

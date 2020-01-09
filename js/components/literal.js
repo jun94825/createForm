@@ -3,8 +3,9 @@ import { dropdown_literal_date } from '../extends/dropdown_literal_date.js';
 export default Vue.component('literal', {
   template: `
     <div class="form-question" v-if="display">
-      <div class="question-title" @mousemove="showEdit(question.Guid)" @mouseout="hideEdit(question.Guid)">
-        <p class="required" v-if="question.Required">*</p>
+      <div class="question-title">
+        <button type="button" class="btn btn-sm btn-outline-success mr-3" @click="edit(question)">編輯</button>
+        <span v-if="question.Required" class="badge badge-danger mr-2">必填</span>
         <h4>{{ index + 1}}.  {{ question.Title }}</h4>
         <p class="edit" :data-key="question.Guid" @click="edit(question)">Edit</p>
       </div>
