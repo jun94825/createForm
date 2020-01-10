@@ -367,7 +367,7 @@ Vue.component('create-form', {
         const index = this.forReadOnly.index;
         delete this.forReadOnly.index;
         this.form.Questions.splice(index, 0, this.forReadOnly);
-        this.forReadOnly = null;
+        this.forReadOnly = {};
       } else {
         this.form.Questions.push({
           ...this.current,

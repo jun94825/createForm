@@ -19,7 +19,12 @@ const dropdown_literal_date = Vue.extend({
           item.index = index;
 
           if (this.editMode) {
-            this.$root.$children[0].forReadOnly = item;
+            if (this.$root.$children[0].forReadOnly.Guid) {
+              alert('當前題目尚未編輯完成');
+              return;
+            } else {
+              this.$root.$children[0].forReadOnly = item;
+            }
           } else {
             this.$root.$children[0].current = item;
           }
