@@ -78,6 +78,10 @@ Vue.component('create-form', {
         {{ this.current.Guid }}
       </div>
 
+      <div class="guid-message">
+        <p>複製成功</p>
+      </div>
+
       <div class="main">
         <div class="form">
           <div class="input form-title">
@@ -444,11 +448,11 @@ Vue.component('create-form', {
         copyIcon.classList.remove('apple');
       }, 300);
 
-      // let guidMessage = document.querySelector('.guid-message');
-      // guidMessage.style.top = '2.5%';
-      // setTimeout(() => {
-      //   guidMessage.style.top = '-50px';
-      // }, 5000);
+      let guidMessage = document.querySelector('.guid-message');
+      guidMessage.style.top = '2.5%';
+      setTimeout(() => {
+        guidMessage.style.top = '-50px';
+      }, 1000);
     },
     // Icon
     showRemoveIcon(item) {
