@@ -16,14 +16,13 @@ Vue.component('create-form', {
         Type: 'radio',
         Options: [],
         Required: false,
-        QuestionScore: 0,
       },
       form: {
         Guid: null,
         Title: '無標題表單',
         Description: '',
         Questions: [],
-        ScoreMode: false,
+        ScoreEnable: false,
       },
       menuType: [
         {
@@ -109,7 +108,7 @@ Vue.component('create-form', {
             :question="item"
             :index="index"
             :is="item.Type"
-            :ScoreMode="form.ScoreMode"
+            :ScoreEnable="form.ScoreEnable"
             :editMode="editMode"
           ></component>
         </div>
@@ -180,7 +179,7 @@ Vue.component('create-form', {
             >
               <div class="option-icon">
                 <span v-if="current.Required" class="badge badge-danger">必填</span>
-                <span v-if="form.ScoreMode" class="badge badge-info">計分</span>
+                <span v-if="form.ScoreEnable" class="badge badge-info">計分</span>
                 <img
                   class="size-24"
                   src="./icons/outline_radio_button_checked.png"
@@ -205,7 +204,7 @@ Vue.component('create-form', {
                 @click="removeOption(index)"
               ></div>
 
-              <input type="number" min="0" v-if="form.ScoreMode" class="form-control ml-auto w-80" v-model="item.OptionScore"></input>
+              <input type="number" min="0" v-if="form.ScoreEnable" class="form-control ml-auto w-80" v-model="item.Score"></input>
             </div>
 
             <div class="option">
@@ -274,7 +273,7 @@ Vue.component('create-form', {
                 type="checkbox"
                 id="toggle2"
                 class="offscreen"
-                v-model="form.ScoreMode"
+                v-model="form.ScoreEnable"
               />
               <label for="toggle2" class="switch"></label>
             </div>
@@ -298,7 +297,7 @@ Vue.component('create-form', {
             >
               <div class="option-icon">
                 <span v-if="current.Required" class="badge badge-danger">必填</span>
-                <span v-if="form.ScoreMode" class="badge badge-info">計分</span>
+                <span v-if="form.ScoreEnable" class="badge badge-info">計分</span>
                 <img
                   class="size-24"
                   src="./icons/outline_radio_button_checked.png"
@@ -317,7 +316,7 @@ Vue.component('create-form', {
                 <div class="line"></div>
               </div>
 
-              <input type="number" min="0" v-if="form.ScoreMode" class="form-control ml-auto w-80" v-model="item.OptionScore"></input>
+              <input type="number" min="0" v-if="form.ScoreEnable" class="form-control ml-auto w-80" v-model="item.Score"></input>
             </div>
 
             <div class="functions mt-4">
@@ -327,7 +326,7 @@ Vue.component('create-form', {
                   type="checkbox"
                   id="toggle2"
                   class="offscreen"
-                  v-model="form.ScoreMode"
+                  v-model="form.ScoreEnable"
                 />
                 <label for="toggle2" class="switch"></label>
               </div>
@@ -346,7 +345,7 @@ Vue.component('create-form', {
         Guid,
         Value: `選項 ${this.current.Options.length + 1}`,
         Binding: [],
-        OptionScore: 0, // 選項分數
+        Score: 0, // 選項分數
       });
 
       Vue.nextTick(() => {
@@ -384,11 +383,10 @@ Vue.component('create-form', {
             Guid: this.randomGuid(),
             Value: '選項 1',
             Binding: [],
-            OptionScore: 0,
+            Score: 0,
           },
         ],
         Required: false,
-        QuestionScore: 0,
       };
     },
     removeQuestion() {
@@ -402,11 +400,10 @@ Vue.component('create-form', {
               Guid: this.randomGuid(),
               Value: '選項 1',
               Binding: [],
-              OptionScore: 0,
+              Score: 0,
             },
           ],
           Required: false,
-          QuestionScore: 0,
         };
       } else {
         alert('此題目為當前編輯之題目，恕無法刪除');
@@ -519,13 +516,14 @@ Vue.component('create-form', {
       obj.Questions.forEach(item => {
         item.Answer = item.Type !== 'checkbox' ? '' : [];
 
-        if (
-          item.Type === 'radio' ||
-          item.Type === 'checkbox' ||
-          item.Type === 'dropdown'
-        ) {
-          item.QuestionScore = 0;
-        }
+        // 不需要 QuestionScore 了，這邊若有問題需重寫
+        // if (
+        //   item.Type === 'radio' ||
+        //   item.Type === 'checkbox' ||
+        //   item.Type === 'dropdown'
+        // ) {
+        //   item.QuestionScore = 0;
+        // }
       });
 
       this.form = obj;
@@ -600,7 +598,7 @@ Vue.component('create-form', {
       Guid: this.randomGuid(),
       Value: `選項 ${this.current.Options.length + 1}`,
       Binding: [],
-      OptionScore: 0,
+      Score: 0,
     });
   },
   mounted() {

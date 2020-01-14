@@ -1,6 +1,6 @@
 const radio_checkbox = Vue.extend({
   template: '#haveBinding',
-  props: ['question', 'index', 'ScoreMode', 'editMode'],
+  props: ['question', 'index', 'ScoreEnable', 'editMode'],
   data() {
     return {
       display: true,
