@@ -117,7 +117,7 @@ Vue.component('create-form', {
           <div class="sidebar">
             <div class="sidebar-item">
               <img
-                class="size-24"
+                class="size-22"
                 src="./icons/outline_add_circle_outline.png"
                 @click="addQuestion"
                 @mousemove="showTooltip('.tooltip-times-circle')"
@@ -130,7 +130,7 @@ Vue.component('create-form', {
 
             <div class="sidebar-item">
               <img
-                class="icon-copy size-24"
+                class="icon-copy size-22"
                 src="./icons/outline_file_copy.png"
                 @click="showCurrentGuid"
                 @mousemove="showTooltip('.tooltip-fa-copy')"
@@ -150,9 +150,9 @@ Vue.component('create-form', {
 
             <div class="menu">
               <div class="current-menu" v-if="!clickMenu" @click="showMenu">
-                <img class="size-24" :src="currentType.iconPath" />
+                <img class="size-22" :src="currentType.iconPath" />
                 <p>{{ currentType.typeTW }}</p>
-                <img class="size-24 ml-auto" src="./icons/outline_arrow_drop_down.png" />
+                <img class="size-22 ml-auto" src="./icons/outline_arrow_drop_down.png" />
               </div>
 
               <div class="menu-list" v-else>
@@ -162,7 +162,7 @@ Vue.component('create-form', {
                   :key="index"
                   @click="switchMenu(item, index)"
                 >
-                  <img class="size-24" :src="item.iconPath" />
+                  <img class="size-22" :src="item.iconPath" />
                   <p>{{ item.typeTW }}</p>
                 </div>
               </div>
@@ -181,12 +181,12 @@ Vue.component('create-form', {
                 <span v-if="current.Required" class="badge badge-danger">必填</span>
                 <span v-if="form.ScoreEnable" class="badge badge-info">計分</span>
                 <img
-                  class="size-24"
+                  class="size-22"
                   src="./icons/outline_radio_button_checked.png"
                   v-if="current.Type === 'radio'"
                 />
                 <img
-                  class="size-24"
+                  class="size-22"
                   src="./icons/outline_check_box.png"
                   v-else-if="current.Type === 'checkbox'"
                 />
@@ -210,12 +210,12 @@ Vue.component('create-form', {
             <div class="option">
               <div class="ques-icon">
                 <img
-                  class="size-24"
+                  class="size-22"
                   src="./icons/outline_radio_button_checked.png"
                   v-if="current.Type === 'radio'"
                 />
                 <img
-                  class="size-24"
+                  class="size-22"
                   src="./icons/outline_check_box.png"
                   v-else-if="current.Type === 'checkbox'"
                 />
@@ -243,7 +243,7 @@ Vue.component('create-form', {
           <div class="functions">
             <div class="delete ml-auto">
               <img
-                class="size-24"
+                class="size-22"
                 src="./icons/outline_delete.png"
                 @click="removeQuestion"
                 @mousemove="showTooltip('.tooltip-delete')"
@@ -299,12 +299,12 @@ Vue.component('create-form', {
                 <span v-if="current.Required" class="badge badge-danger">必填</span>
                 <span v-if="form.ScoreEnable" class="badge badge-info">計分</span>
                 <img
-                  class="size-24"
+                  class="size-22"
                   src="./icons/outline_radio_button_checked.png"
                   v-if="current.Type === 'radio'"
                 />
                 <img
-                  class="size-24"
+                  class="size-22"
                   src="./icons/outline_check_box.png"
                   v-else-if="current.Type === 'checkbox'"
                 />
