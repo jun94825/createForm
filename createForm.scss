@@ -463,7 +463,8 @@ label {
 
 .guid-message {
   @include size(125px, 40px);
-  @include position(-50px, 50%, absolute);
+  @include position(0px, 50%, absolute);
+  opacity: 0;
   transition: 1s;
   border-radius: 2.5px;
   background-color: rgba(0, 0, 0, 0.8);

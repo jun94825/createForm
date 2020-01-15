@@ -446,9 +446,9 @@ Vue.component('create-form', {
       }, 300);
 
       let guidMessage = document.querySelector('.guid-message');
-      guidMessage.style.top = '2.5%';
+      guidMessage.style.opacity = 1;
       setTimeout(() => {
-        guidMessage.style.top = '-50px';
+        guidMessage.style.opacity = 0;
       }, 1000);
     },
     // Icon
@@ -603,10 +603,10 @@ Vue.component('create-form', {
   },
   mounted() {
     // document.title = `${this.form.Title} - Google 表單`;
-    setTimeout(() => {
-      this.form.Guid = this.randomGuid();
-      this.current.Guid = this.randomGuid();
-    }, 250);
+    // setTimeout(() => {
+    this.form.Guid = this.randomGuid();
+    this.current.Guid = this.randomGuid();
+    // }, 250);
   },
 });
 
