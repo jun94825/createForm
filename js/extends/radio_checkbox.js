@@ -27,7 +27,12 @@ const radio_checkbox = Vue.extend({
               this.$root.$children[0].forReadOnly = item;
             }
           } else {
-            this.$root.$children[0].current = item;
+            if (typeof this.$root.$children[0].current.index === 'number') {
+              alert('當前題目尚未編輯完成');
+              return;
+            } else {
+              this.$root.$children[0].current = item;
+            }
           }
 
           array.splice(index, 1);

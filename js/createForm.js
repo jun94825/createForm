@@ -77,7 +77,7 @@ Vue.component('create-form', {
         {{ this.current.Guid }}
       </div>
 
-      <div class="guid-message">
+      <div id="fuck-opacity" class="guid-message">
         <p>複製成功</p>
       </div>
 
@@ -286,7 +286,7 @@ Vue.component('create-form', {
               <input type="text" v-model="forReadOnly.Title" placeholder="問題" />
               <div class="line"></div>
             </div>
-            <button type="button" class="btn btn-sm btn-outline-success" @click="addQuestion">編輯完成</button>
+            <button v-if="JSON.stringify(forReadOnly) !== '{}'" type="button" class="btn btn-sm btn-outline-success" @click="addQuestion">編輯完成</button>
           </div>
 
           <div class="options" v-if="forReadOnly">

@@ -463,8 +463,7 @@ label {
 
 .guid-message {
   @include size(125px, 40px);
-  @include position(0px, 50%, absolute);
-  opacity: 0;
+  @include position(10px, 50%, absolute);
   transition: 1s;
   border-radius: 2.5px;
   background-color: rgba(0, 0, 0, 0.8);
@@ -474,4 +473,8 @@ label {
     line-height: 40px;
     text-align: center;
   }
+}
+
+#fuck-opacity {
+  opacity: 0;
 }
