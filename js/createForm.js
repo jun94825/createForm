@@ -281,7 +281,7 @@ Vue.component('create-form', {
         </div>
 
         <div class="editor" v-else>
-          <div class="title-and-menu" v-if="forReadOnly">
+          <div class="title-and-menu" v-if="forReadOnly.Guid">
             <div class="input title">
               <input type="text" v-model="forReadOnly.Title" placeholder="問題" />
               <div class="line"></div>
@@ -289,7 +289,7 @@ Vue.component('create-form', {
             <button v-if="JSON.stringify(forReadOnly) !== '{}'" type="button" class="btn btn-sm btn-outline-success" @click="addQuestion">編輯完成</button>
           </div>
 
-          <div class="options" v-if="forReadOnly">
+          <div class="options" v-if="forReadOnly.Guid">
             <div
               class="option"
               v-for="(item, index) in forReadOnly.Options"
