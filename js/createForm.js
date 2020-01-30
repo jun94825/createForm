@@ -529,6 +529,23 @@ Vue.component('create-form', {
       this.form = obj;
       this.editMode = true;
     },
+    checkEditArea(mode) {
+      if (mode === 'edit') {
+        if (JSON.stringify(this.forReadOnly) !== '{}') {
+          console.error('編輯區仍存在尚未編輯完成之題目，請完成編輯。');
+          return false;
+        } else {
+          return true;
+        }
+      } else if (mode === 'create') {
+        if (this.current.index !== undefined) {
+          console.error('編輯區仍存在尚未編輯完成之題目，請完成編輯。');
+          return false;
+        } else {
+          return true;
+        }
+      }
+    },
   },
   // watch: {
   //   'form.Title'(value) {
@@ -617,4 +634,5 @@ const vm = new Vue({
 window.jun = {
   getCreateFormJS: vm.$refs.jun.getFormJSON, // 取得當前表單的 JSON 結構
   openEditMode: vm.$refs.jun.openEditMode, // 開啟編輯模式：只可修改分數、題目的文字與是否啟用計分功能
+  checkEditArea: vm.$refs.jun.checkEditArea, // 檢查編輯區域是否有題目尚未編輯完成，需要一個表明當前模式的參數
 };
