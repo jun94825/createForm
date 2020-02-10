@@ -117,8 +117,17 @@ Vue.component('create-form', {
           <div class="sidebar">
             <div class="sidebar-item">
               <img
+                v-if="typeof current.index === 'number'"
                 class="size-22"
                 src="./icons/done.png"
+                @click="addQuestion"
+                @mousemove="showTooltip('.tooltip-times-circle')"
+                @mouseout="hideTooltip('.tooltip-times-circle')"
+              />
+              <img
+                v-else
+                class="size-22"
+                src="./icons/outline_add_circle_outline.png"
                 @click="addQuestion"
                 @mousemove="showTooltip('.tooltip-times-circle')"
                 @mouseout="hideTooltip('.tooltip-times-circle')"
