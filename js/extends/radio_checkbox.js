@@ -8,7 +8,7 @@ const radio_checkbox = Vue.extend({
   },
   methods: {
     binding(item) {
-      const bindingTarget = prompt();
+      const bindingTarget = window.prompt('請輸入欲跳題的題組 Guid');
       if (bindingTarget === null) {
         return;
       }

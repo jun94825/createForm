@@ -118,13 +118,13 @@ Vue.component('create-form', {
             <div class="sidebar-item">
               <img
                 class="size-22"
-                src="./icons/outline_add_circle_outline.png"
+                src="./icons/done.png"
                 @click="addQuestion"
                 @mousemove="showTooltip('.tooltip-times-circle')"
                 @mouseout="hideTooltip('.tooltip-times-circle')"
               />
               <div class="tooltip-times-circle">
-                <p>新增問題</p>
+                <p>完成編輯</p>
               </div>
             </div>
 
